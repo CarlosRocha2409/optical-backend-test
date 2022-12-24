@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import { SALT_ROUNDS } from "../config/general.config";
 import jwt from "jsonwebtoken";
-import { FORBIDDEN } from "../types/error.type";
+import { FORBIDDEN, UNAUTHORIZED } from "../types/error.type";
 import { ApiError } from "../error-handling/ApiError";
 import { Response, Request, NextFunction } from "express";
 
@@ -45,7 +45,7 @@ export async function authMiddleWare(
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
 
-  if (token == null) return res.sendStatus(401);
+  if (token == null) return res.sendStatus(UNAUTHORIZED);
 
   const user = await verifyJWT(token);
   res.locals.staff = user;

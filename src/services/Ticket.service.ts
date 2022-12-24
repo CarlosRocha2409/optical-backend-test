@@ -41,6 +41,9 @@ export class TicketService {
         path: "comments",
         populate: "staff",
       })
+      .sort({
+        created_at: -1,
+      })
       .then((tickets) => {
         return new PaginationDTO(
           page,
@@ -118,7 +121,7 @@ export class TicketService {
 
     return this.repo
       .updateOne(
-        { id: ticket.id },
+        { _id: ticket.id },
         {
           ...ticket,
         }

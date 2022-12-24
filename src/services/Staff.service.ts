@@ -122,7 +122,7 @@ export class StaffService {
 
     return this.repo
       .updateOne(
-        { id: user.id },
+        { _id: user.id },
         {
           ...update,
         }

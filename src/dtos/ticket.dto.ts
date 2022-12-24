@@ -9,11 +9,13 @@ export class CommentDTO {
   staffMember: StaffDTO;
   description: string;
   active: boolean;
+  createdAt: Date;
 
   constructor(comment: any) {
     this.staffMember = new StaffDTO(comment.staff);
     this.description = comment.description;
     this.active = comment.active;
+    this.createdAt = comment.created_at;
   }
 }
 

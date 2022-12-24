@@ -1,5 +1,6 @@
 import apiLogger from "../logger/api.logger";
 import * as mongoose from "mongoose";
+import { StaffService } from "../services/Staff.service";
 
 class DBConfig {
   private static instance: DBConfig;
